@@ -1,13 +1,12 @@
-# 🎨 NFT Collection Analytics - Chainhook Challenge
+# 🎨 TraitVault - Real-time NFT Analytics Platform
 
 > Real-time NFT analytics platform powered by Hiro Chainhooks
-
 [![Stacks](https://img.shields.io/badge/Stacks-Testnet-purple)](https://stacks.co)
 [![Hiro](https://img.shields.io/badge/Built_with-Chainhooks-blue)](https://hiro.so)
 
 ## 🌟 Overview
 
-NFT Collection Analytics is a comprehensive analytics platform that monitors NFT collections in real-time using Hiro Chainhooks. It tracks mints, transfers, calculates rarity scores, and provides detailed collection insights.
+TraitVault is a comprehensive analytics platform that monitors NFT collections in real-time using Hiro Chainhooks. It tracks mints, transfers, calculates rarity scores, and provides detailed collection insights.
 
 ### Key Features
 
@@ -53,7 +52,7 @@ Stacks Blockchain → Chainhooks → Backend Server → PostgreSQL Database
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd nft-analytics-chainhook
+cd traitvault
 
 # Install backend dependencies
 cd backend
@@ -171,7 +170,7 @@ NFTs are ranked by their total rarity score, with higher scores indicating rarer
 ## 📁 Project Structure
 
 ```
-nft-analytics-chainhook/
+traitvault/
 ├── backend/
 │   ├── src/
 │   │   ├── config/          # Database and app configuration
@@ -246,10 +245,6 @@ curl "http://localhost:3001/api/collections/1/nfts?sort=rarity&limit=10"
 - [ ] Trait floor prices
 - [ ] Portfolio tracking
 - [ ] Export data to CSV
-
-## 🤝 Contributing
-
-This is a hackathon submission project. Feel free to fork and build upon it!
 
 ## 🙏 Acknowledgments
 
