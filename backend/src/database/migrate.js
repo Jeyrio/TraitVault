@@ -16,6 +16,9 @@ async function migrate() {
     const schemaPath = path.join(__dirname, 'schema.sql');
     const schema = fs.readFileSync(schemaPath, 'utf8');
 
+    // Execute schema within a transaction
+    await client.query('BEGIN');
+
     // Execute schema
     await client.query(schema);
 
@@ -24,7 +27,7 @@ async function migrate() {
     // Insert default collection (update with your contract address)
     const contractAddress =
       process.env.NFT_CONTRACT_ADDRESS ||
-      'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.stacks-punks';
+      'ST1CQYC7X5XXY6NFY043F04EAEK7MZRYSSF2Y6Z8W.traitvault';
 
     await client.query(
       `
@@ -34,14 +37,17 @@ async function migrate() {
     `,
       [
         contractAddress,
-        'Stacks Punks',
-        'A collection of unique Stacks Punks NFTs with various traits',
+        'TraitVault Collection',
+        'A collection of unique NFTs with various traits tracked by TraitVault',
       ]
     );
+
+    await client.query('COMMIT');
 
     console.log('✅ Default collection inserted');
     console.log('🎉 Migration completed successfully!');
   } catch (error) {
+    await client.query('ROLLBACK');
     console.error('❌ Migration failed:', error);
     throw error;
   } finally {
